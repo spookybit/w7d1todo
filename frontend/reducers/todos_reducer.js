@@ -26,12 +26,13 @@ const todosReducer = (state = initialState, action) => {
       return newState;
     case RECEIVE_TODO:
       const newTodo = {};
+      console.log(state);
       newTodo[action.todo.id] = action.todo;
       newState = merge({}, state, newTodo);
       return newState;
     case REMOVE_TODO:
       newState = merge({}, state);
-      delete newState.action.id;
+      delete newState[action.todo.id];
       return newState;
     default:
       return state;
